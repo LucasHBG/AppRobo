@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_tela_bem_vindo"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="16dp"
+    android:paddingTop="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:orientation="vertical"
+    tools:context=".Tela_bemVindo">
+
+    <TextView
+        android:layout_width="277dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="180dp"
+        android:textColor="	#eeb422"
+        android:background="#f0f8ff"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        android:text="@string/bem_vindo_ao_jogo" />
+
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/inciar"
+            android:id="@+id/iniciarBT"
+            android:textSize="18sp"
+            android:layout_gravity="center"
+            android:background="#1de9b6"
+            android:textColor="#37474f"
+            android:layout_marginTop="110dp"/>
+
+
+</LinearLayout>

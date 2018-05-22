@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">UFJ - Espaço das Profissões</string>
+    <string name="bem_vindo_ao_jogo"> Bem-vindo(a) ao jogo!</string>
+    <string name="escolha1">Botao 1</string>
+    <string name="escolha2">Botao 2</string>
+    <string name="escolha3">Botao 3</string>
+    <string name="textoDePergunta">Qual a resposta certa?(Equação)</string>
+
+</resources>

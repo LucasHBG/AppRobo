@@ -1,0 +1,50 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.carro.robo.mobile.ufj.approbo.MainBluetoothActivity">
+
+    <TextView
+        android:id="@+id/statusMessage"
+        android:layout_width="365dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textSpace"
+        android:layout_centerHorizontal="true"
+        android:text=""
+        android:textSize="15dp" />
+
+
+    <Button
+        android:id="@+id/button_PairedDevices"
+        android:layout_width="159dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/button_DiscoveredDevices"
+        android:layout_marginStart="17dp"
+        android:background="#7fffd4"
+        android:onClick="searchPairedDevices"
+        android:text="Dispositivos\n pareados" />
+
+    <Button
+        android:id="@+id/button_DiscoveredDevices"
+        android:layout_width="159dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="108dp"
+        android:background="#adff2f"
+        android:onClick="discoverDevices"
+        android:text="Iniciar descoberta\n de dispositivos" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:id="@+id/textSpace"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

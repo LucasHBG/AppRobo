@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="iniciarBT" type="id">Iniciar!</item>
+    <string name="inciar">Inciar!</string>
+</resources>
