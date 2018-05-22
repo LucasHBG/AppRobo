@@ -11,8 +11,6 @@ import android.widget.Toast;
 
 public class Tela_bemVindo extends AppCompatActivity {
 
-    private ProjetoRoboticaLogica novaLogica = new ProjetoRoboticaLogica();
-
     private Button iniciarBT;
 
     @Override
@@ -32,8 +30,6 @@ public class Tela_bemVindo extends AppCompatActivity {
             public void onClick(View view) {
                     Intent chamaTelaQuestoes = new Intent(Tela_bemVindo.this, CriacaoQuestoes.class);
                     startActivity(chamaTelaQuestoes);
-                       novaLogica.acionaQuestao(true);
-                       novaLogica.logica();
             }
         });
 

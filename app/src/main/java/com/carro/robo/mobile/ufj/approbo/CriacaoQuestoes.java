@@ -12,13 +12,16 @@ import java.util.Random;
 public class CriacaoQuestoes extends AppCompatActivity{
 
     private ProjetoRoboticaLogica novaLogica = new ProjetoRoboticaLogica();
+
     private int a,b;
 
+    Random r = new Random();
     private TextView totalDePontos;
     private TextView textoDaQuestao;
     private Button escolha1;
     private Button escolha2;
     private Button escolha3;
+    private int escolhaCorreta;
 
     private int somaScore = 0;
     //    private int numeroDaQuestao = 0;      com os calculos alterados e a nova logica usada, esse inteiro fica inutil
@@ -35,15 +38,16 @@ public class CriacaoQuestoes extends AppCompatActivity{
         escolha2 = (Button) findViewById(R.id.escolha2);
         escolha3 = (Button) findViewById(R.id.escolha3);
 
+        novaLogica.acionaQuestao(true);
         mudarQuestao();
 
 
         escolha1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (getEscolhaButton()== 1){
+                if (escolhaCorreta== 1){
 
-                    novaLogica.andaCarrinho();
+                    //novaLogica.andaCarrinho();
                    // Integer.parseInt(novaLogica.printaBotao());
                     novaLogica.botaoCorreto(true);
                     Toast.makeText(CriacaoQuestoes.this, "Acertou!", Toast.LENGTH_SHORT)
@@ -52,6 +56,7 @@ public class CriacaoQuestoes extends AppCompatActivity{
                     //novaLogica.andaCarrinho();
                     updateScore(somaScore);
                     mudarQuestao();
+
                 }
                 else
                 {
@@ -68,7 +73,7 @@ public class CriacaoQuestoes extends AppCompatActivity{
         escolha2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (getEscolhaButton() == 2) {
+                if (escolhaCorreta == 2) {
                    // Integer.parseInt(novaLogica.printaBotao());
                     novaLogica.botaoCorreto(true);
                         Toast.makeText(CriacaoQuestoes.this, "Acertou!", Toast.LENGTH_SHORT)
@@ -90,7 +95,7 @@ public class CriacaoQuestoes extends AppCompatActivity{
         escolha3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (getEscolhaButton() == 3) {
+                if (escolhaCorreta == 3) {
                     //Integer.parseInt(novaLogica.printaBotao())
 
                     novaLogica.botaoCorreto(true);
@@ -112,26 +117,32 @@ public class CriacaoQuestoes extends AppCompatActivity{
     }
 
     private void mudarQuestao(){
+        novaLogica.logica();
         textoDaQuestao.setText(novaLogica.printaConta());
+        escolhaCorreta = getEscolhaButton();
+        String r1,r2,r3;
+        r1 = novaLogica.printaBotao();
+        r2 = Integer.toString(Integer.parseInt(novaLogica.printaBotao())+r.nextInt(4+1+4)-4);
+        r3 = Integer.toString(Integer.parseInt(novaLogica.printaBotao())+r.nextInt(4+1+4)-4);
+        if(r2 == r3){r3 = Integer.toString(Integer.parseInt(r3)+1);}
+        if(r1 == r3){r3 = Integer.toString(Integer.parseInt(r3)+1);}
+        if(r1 == r2){r2 = Integer.toString(Integer.parseInt(r2)+1);}
 
-        if(getEscolhaButton() == 1){
-        escolha1.setText(Integer.toString(getEscolhaButton()));
+        if(escolhaCorreta == 1){
+            escolha1.setText(r1);
+            escolha2.setText(r2);
+            escolha3.setText(r3);
         }
-        else {escolha1.setText(Integer.toString(Integer.parseInt((novaLogica.printaBotao())+1)));}
-
-        if(getEscolhaButton()==2){
-            escolha2.setText(novaLogica.printaBotao());
+        else if(escolhaCorreta == 2){
+            escolha1.setText(r2);
+            escolha2.setText(r1);
+            escolha3.setText(r3);
         }
-        else {
-            escolha2.setText(Integer.toString(Integer.parseInt((novaLogica.printaBotao()) + 2)));
+        else{
+            escolha1.setText(r3);
+            escolha2.setText(r2);
+            escolha3.setText(r1);
         }
-        if(getEscolhaButton()==3){
-            escolha3.setText(novaLogica.printaBotao());
-        }
-        else {
-            escolha3.setText(Integer.toString(Integer.parseInt((novaLogica.printaBotao()) + 3)));
-        }
-
     }
 
     private void updateScore(int recebePontos){
@@ -139,7 +150,6 @@ public class CriacaoQuestoes extends AppCompatActivity{
     }
 
     public int getEscolhaButton(){
-        Random r = new Random();
         int sorteadorQuestoes = (int) (r.nextInt(3)+1);
         return sorteadorQuestoes;
     }

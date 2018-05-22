@@ -25,9 +25,7 @@ public class ProjetoRoboticaLogica extends AppCompatActivity{
 
     public void andaCarrinho() { // funcao que manda o carrinho andar
         TAM = 500; // tamanho da pista em cm
-        //dist = (float) (TAM / 11.8);
-        //APAGUE ISSO AQUI 18:39 hr 22/05
-        dist = 10;
+        dist = (float) (TAM / 11.8);
         ExtensorDeAplicacoes APP = (ExtensorDeAplicacoes)getApplication();
         byte[] data = Float.toString(dist).getBytes();
         APP.getConnect().write(data);
@@ -42,9 +40,9 @@ public class ProjetoRoboticaLogica extends AppCompatActivity{
     public String printaConta() { // metodo para fazer printar a conta de acordo com o sinalizador
 
         if (flag == 1) { // se a flag for 1, sera conta de subtraçao
-            return ("Selecione a resposta correta: \n     "+ randomNumber1 + " - " + randomNumber2);
+            return ("Selecione a resposta correta: \n     "+ Integer.toString(randomNumber1) + " - " + Integer.toString(randomNumber2));
         } else { // caso contrario sera conta de soma
-            return ("Selecione a resposta correta: \n     " + randomNumber1 + " + " + randomNumber2);
+            return ("Selecione a resposta correta: \n     " + Integer.toString(randomNumber1) + " + " + Integer.toString(randomNumber2));
         }
 
     }
