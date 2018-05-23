@@ -4,7 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 
 public class ProjetoRoboticaLogica extends AppCompatActivity{
 
-    private boolean isCorrect,acionarEquacao; // botoes para os metodos de passagem dos dados
+    private boolean isCorrect = false,acionarEquacao; // botoes para os metodos de passagem dos dados
     private int min, max, nivel1 = 0, nivel2 = 0, flag; // variaveis para determinar o floor e o teto dos numeros random, contagem para passar de nivel e sinalizador do tipo de conta;
     private int randomNumber1; // variavel do primeiro numero random
     private int randomNumber2; // variavel do segundo numero random
@@ -56,7 +56,7 @@ public class ProjetoRoboticaLogica extends AppCompatActivity{
         TAM = 500; // tamanho da pista em cm
         dist = (float) (TAM / 23.6);
         if (acionarEquacao == true) { // se o botao de start for apertado a logica entra em ação
-            if ((nivel1 >=0 %% nivel1 <= 4) && nivel2 == 0) {// se estiver no nivel 1 segue as instruções
+            if ((nivel1 >= 0 && nivel1 <= 4) && nivel2 == 0) {// se estiver no nivel 1 segue as instruções
                 randomNumber1 = (int) (10 * Math.random()) + 1; // primeiro random recebe um numero random de 0 a 10
                 randomNumber2 = (int) (10 * Math.random()) + 1; // segundo random recebe um numero random de 0 a 10
                 if (randomNumber1 > randomNumber2) { // se o primeiro random for maior que o segundo..
@@ -70,8 +70,12 @@ public class ProjetoRoboticaLogica extends AppCompatActivity{
                     printaConta();
                     printaBotao(); // printa o resultado da adição
                 }
-                if (botaoCorreto(isCorrect) == false && nivel1 > 0) { // se o botao que a pessoa clicou for o errado
-                    nivel1--; // nivel1 recebe -1 caso estiver na segunda questão do nivel 1
+                if (isCorrect == false) { // se o botao que a pessoa clicou for o errado
+                    if(nivel1 > 0)
+                    {
+                        nivel1--; // nivel1 recebe -1 caso estiver na segunda questão do nivel 1
+                    }
+
                 } else { // caso ele tenha acertado o botao correto
                     nivel1++; // nivel1 recebe +1
                     if(anda == true){
@@ -97,8 +101,11 @@ public class ProjetoRoboticaLogica extends AppCompatActivity{
                     printaConta();
                     printaBotao();
                 }
-                if (botaoCorreto(isCorrect) == false && nivel2 > 0) {
-                    nivel2--; // nivel 2 recebe -1 caso esteja errado
+                if (isCorrect == false ) {
+                    if(nivel2 > 0)
+                    {
+                        nivel2--; // nivel 2 recebe -1 caso esteja errado
+                    }
                 } else {
                     nivel2++; // nivel 2 recebe +1 caso esteja correto
                     if(anda == true) {
@@ -125,8 +132,11 @@ public class ProjetoRoboticaLogica extends AppCompatActivity{
                     printaConta();
                     printaBotao();
                 }
-                if (botaoCorreto(isCorrect) == false && nivel2 > 0) { // caso o participante errar uma questão
-                    nivel2--; // de nível 3, ele volta para o nivel 2;
+                if (isCorrect == false) { // caso o participante errar uma questão
+                    if(nivel2 > 0)
+                    {
+                        nivel2--; // de nível 3, ele volta para o nivel 2;
+                    }
                 } else { // não há variavel para nivel 3 pois a brincadeira esta prestes a acabar em 2 acertos no maximo
                     if(anda == true) {
                         andaCarrinho(dist*3);
