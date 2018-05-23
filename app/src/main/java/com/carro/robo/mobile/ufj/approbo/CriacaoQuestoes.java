@@ -45,13 +45,13 @@ public class CriacaoQuestoes extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 if (escolhaCorreta== 1){
+                    escolha1.setBackgroundResource(R.color.NewERRO);
                     novaLogica.botaoCorreto(true);
                     Toast.makeText(CriacaoQuestoes.this, "Acertou!", Toast.LENGTH_SHORT)
                             .show();
                     somaScore = somaScore + 1;
                     updateScore(somaScore);
                     mudarQuestao(true);
-
                 }
                 else
                 {
@@ -70,6 +70,7 @@ public class CriacaoQuestoes extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 if (escolhaCorreta == 2) {
+                    escolha2.setBackgroundResource(R.color.NewERRO);
                     novaLogica.botaoCorreto(true);
                         Toast.makeText(CriacaoQuestoes.this, "Acertou!", Toast.LENGTH_SHORT)
                                 .show();
@@ -92,7 +93,7 @@ public class CriacaoQuestoes extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 if (escolhaCorreta == 3) {
-
+                    escolha3.setBackgroundResource(R.color.NewERRO);
                     novaLogica.botaoCorreto(true);
                         Toast.makeText(CriacaoQuestoes.this, "Acertou!", Toast.LENGTH_SHORT)
                                 .show();
@@ -110,14 +111,6 @@ public class CriacaoQuestoes extends AppCompatActivity{
                 }
 
         });
-
-    }
-
-    private void corErro(){
-        escolha3.setBackgroundResource(R.color.Red);
-    }
-
-    private void corCerto(){
 
     }
 
@@ -149,6 +142,7 @@ public class CriacaoQuestoes extends AppCompatActivity{
             } else {
                 r2 = Integer.toString(Integer.parseInt(r2) + 1);
             }
+
         }
 
 
@@ -167,6 +161,10 @@ public class CriacaoQuestoes extends AppCompatActivity{
             escolha2.setText(r2);
             escolha3.setText(r1);
         }
+
+        escolha1.setBackgroundResource(R.color.NewNEUTRO);
+        escolha2.setBackgroundResource(R.color.NewNEUTRO);
+        escolha3.setBackgroundResource(R.color.NewNEUTRO);
     }
 
     private void updateScore(int recebePontos){

@@ -82,9 +82,10 @@ public class ProjetoRoboticaLogica extends AppCompatActivity{
                     andaCarrinho(dist); // chama a função que faz o carrinho andar
                     }
                 }
+                return;
             }// fim nivel 1
 
-            if (nivel1 == 4 && (nivel2 >= 0 && nivel2 <= 4)) // se a pessoa acertou pelo menos 2 questões do nivel 1 seguidas
+            if (nivel1 > 4 && (nivel2 >= 0 && nivel2 <= 4)) // se a pessoa acertou pelo menos 2 questões do nivel 1 seguidas
             {
                 max = 50; // as questões passam a ser com números de 20 à 50
                 min = 20;
@@ -112,9 +113,10 @@ public class ProjetoRoboticaLogica extends AppCompatActivity{
                         andaCarrinho(dist*2);
                     }
                 }
+                return;
             }// fim nivel 2
 
-            if (nivel1 == 4 && nivel2 == 4)// se a pessoa acertou pelo menos 2 questões de nivell 1 e 2 de nível 2
+            if (nivel1 > 4 && nivel2 > 4)// se a pessoa acertou pelo menos 2 questões de nivell 1 e 2 de nível 2
             {
                 max = 100; // range das questões passam a ser de 50 à 100
                 min = 50;
