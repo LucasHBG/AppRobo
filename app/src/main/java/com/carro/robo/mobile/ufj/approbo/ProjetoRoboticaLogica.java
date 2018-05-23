@@ -11,7 +11,6 @@ public class ProjetoRoboticaLogica extends AppCompatActivity{
     private int randomNumberAdd; // variavel que recebe a soma dos randons
     private int randomNumberSub; // variavel que recebe a subtração dos randons
     private float dist, TAM; // variaveis para determinar e calcular a distancia da pista e que o carrinho anda, respectivamente
-    public String valorDist;
 
     public boolean botaoCorreto(boolean resultado) { // funcao que recebe se a pessoa apertou o botao certo
         isCorrect = resultado; // variavel recebe true/false do botao que apertou
@@ -24,7 +23,8 @@ public class ProjetoRoboticaLogica extends AppCompatActivity{
     }
 
     public void andaCarrinho(float d) { // funcao que manda o carrinho andar
-        byte[] data = Float.toString(d).getBytes();
+        String aux = Integer.toString((int) d) + " ";
+        byte[] data = (aux).getBytes();
         ExtensorDeAplicacoes.connect.write(data);
 
 //        sendMessage(Float.toString(dist));// distancia recebe o tamanho da pista dividido pela constante 11,8
