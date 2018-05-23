@@ -41,7 +41,6 @@ public class CriacaoQuestoes extends AppCompatActivity{
         novaLogica.acionaQuestao(true);
         mudarQuestao(false);
 
-
         escolha1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,6 +55,8 @@ public class CriacaoQuestoes extends AppCompatActivity{
                 }
                 else
                 {
+                    escolha1.setBackgroundResource(R.color.Red);
+
                     novaLogica.botaoCorreto(false);
                     Toast.makeText(CriacaoQuestoes.this, "Resposta errada!", Toast.LENGTH_SHORT)
                         .show();
@@ -76,7 +77,9 @@ public class CriacaoQuestoes extends AppCompatActivity{
                         updateScore(somaScore);
                         mudarQuestao(true);
                     } else {
-                   novaLogica.botaoCorreto(false);
+                    escolha2.setBackgroundResource(R.color.Red);
+
+                    novaLogica.botaoCorreto(false);
                         Toast.makeText(CriacaoQuestoes.this, "Resposta errada!", Toast.LENGTH_SHORT)
                                 .show();
                         mudarQuestao(true);
@@ -97,6 +100,8 @@ public class CriacaoQuestoes extends AppCompatActivity{
                         updateScore(somaScore);
                         mudarQuestao(true);
                 } else {
+                    escolha3.setBackgroundResource(R.color.Red);
+
                     novaLogica.botaoCorreto(false);
                     Toast.makeText(CriacaoQuestoes.this, "Resposta errada!", Toast.LENGTH_SHORT)
                                 .show();
@@ -108,6 +113,14 @@ public class CriacaoQuestoes extends AppCompatActivity{
 
     }
 
+    private void corErro(){
+        escolha3.setBackgroundResource(R.color.Red);
+    }
+
+    private void corCerto(){
+
+    }
+
     private void mudarQuestao(boolean anda){
         novaLogica.logica(anda);
         textoDaQuestao.setText(novaLogica.printaConta());
@@ -116,9 +129,28 @@ public class CriacaoQuestoes extends AppCompatActivity{
         r1 = novaLogica.printaBotao();
         r2 = Integer.toString(Integer.parseInt(novaLogica.printaBotao())+r.nextInt(4+1+4)-4);
         r3 = Integer.toString(Integer.parseInt(novaLogica.printaBotao())+r.nextInt(4+1+4)-4);
-        if(r2 == r3){r3 = Integer.toString(Integer.parseInt(r3)+1);}
-        if(r1 == r3){r3 = Integer.toString(Integer.parseInt(r3)+1);}
-        if(r1 == r2){r2 = Integer.toString(Integer.parseInt(r2)+1);}
+        if(r2 == r3) {
+            if (Integer.toString(Integer.parseInt(r3) + 1) == r1) {
+                r3 = Integer.toString(Integer.parseInt(r3) + 2);
+            } else {
+                r3 = Integer.toString(Integer.parseInt(r3) + 1);
+            }
+        }
+        if(r1 == r3) {
+            if (Integer.toString(Integer.parseInt(r3) + 1) == r2) {
+                r3 = Integer.toString(Integer.parseInt(r3) + 2);
+            } else {
+                r3 = Integer.toString(Integer.parseInt(r3) + 1);
+            }
+        }
+        if(r1 == r2) {
+            if (Integer.toString(Integer.parseInt(r2) + 1) == r3) {
+                r2 = Integer.toString(Integer.parseInt(r2) + 2);
+            } else {
+                r2 = Integer.toString(Integer.parseInt(r2) + 1);
+            }
+        }
+
 
         if(escolhaCorreta == 1){
             escolha1.setText(r1);
