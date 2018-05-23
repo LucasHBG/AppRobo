@@ -56,7 +56,7 @@ public class ProjetoRoboticaLogica extends AppCompatActivity{
         TAM = 500; // tamanho da pista em cm
         dist = (float) (TAM / 23.6);
         if (acionarEquacao == true) { // se o botao de start for apertado a logica entra em ação
-            if ((nivel1 >=0 %% nivel1 <= 4) && nivel2 == 0) {// se estiver no nivel 1 segue as instruções
+            if ((nivel1 >=0 && nivel1 <= 4) && nivel2 == 0) {// se estiver no nivel 1 segue as instruções
                 randomNumber1 = (int) (10 * Math.random()) + 1; // primeiro random recebe um numero random de 0 a 10
                 randomNumber2 = (int) (10 * Math.random()) + 1; // segundo random recebe um numero random de 0 a 10
                 if (randomNumber1 > randomNumber2) { // se o primeiro random for maior que o segundo..
