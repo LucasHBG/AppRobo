@@ -26,9 +26,8 @@ public class ProjetoRoboticaLogica extends AppCompatActivity{
     public void andaCarrinho() { // funcao que manda o carrinho andar
         TAM = 500; // tamanho da pista em cm
         dist = (float) (TAM / 11.8);
-        ExtensorDeAplicacoes APP = (ExtensorDeAplicacoes)getApplication();
         byte[] data = Float.toString(dist).getBytes();
-        APP.getConnect().write(data);
+        ExtensorDeAplicacoes.connect.write(data);
 
 //        sendMessage(Float.toString(dist));// distancia recebe o tamanho da pista dividido pela constante 11,8
 
@@ -55,7 +54,7 @@ public class ProjetoRoboticaLogica extends AppCompatActivity{
         }
     }
 
-    public void logica() { // logica principal
+    public void logica(boolean anda) { // logica principal
         if (acionarEquacao == true) { // se o botao de start for apertado a logica entra em ação
             if ((nivel1 == 0 || nivel1 == 1) && nivel2 == 0) {// se estiver no nivel 1 segue as instruções
                 randomNumber1 = (int) (10 * Math.random()) + 1; // primeiro random recebe um numero random de 0 a 10
@@ -75,7 +74,9 @@ public class ProjetoRoboticaLogica extends AppCompatActivity{
                     nivel1--; // nivel1 recebe -1 caso estiver na segunda questão do nivel 1
                 } else { // caso ele tenha acertado o botao correto
                     nivel1++; // nivel1 recebe +1
+                    if(anda == true){
                     andaCarrinho(); // chama a função que faz o carrinho andar
+                    }
                 }
             }// fim nivel 1
 
@@ -100,7 +101,9 @@ public class ProjetoRoboticaLogica extends AppCompatActivity{
                     nivel2--; // nivel 2 recebe -1 caso esteja errado
                 } else {
                     nivel2++; // nivel 2 recebe +1 caso esteja correto
-                    andaCarrinho();
+                    if(anda == true) {
+                        andaCarrinho();
+                    }
                 }
             }// fim nivel 2
 
@@ -125,7 +128,9 @@ public class ProjetoRoboticaLogica extends AppCompatActivity{
                 if (botaoCorreto(isCorrect) == false && nivel2 > 0) { // caso o participante errar uma questão
                     nivel2--; // de nível 3, ele volta para o nivel 2;
                 } else { // não há variavel para nivel 3 pois a brincadeira esta prestes a acabar em 2 acertos no maximo
-                    andaCarrinho();
+                    if(anda == true) {
+                        andaCarrinho();
+                    }
                 }
             }//nivel 3
 

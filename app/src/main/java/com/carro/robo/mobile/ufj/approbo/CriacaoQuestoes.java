@@ -39,32 +39,27 @@ public class CriacaoQuestoes extends AppCompatActivity{
         escolha3 = (Button) findViewById(R.id.escolha3);
 
         novaLogica.acionaQuestao(true);
-        mudarQuestao();
+        mudarQuestao(false);
 
 
         escolha1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (escolhaCorreta== 1){
-
-                    //novaLogica.andaCarrinho();
-                   // Integer.parseInt(novaLogica.printaBotao());
                     novaLogica.botaoCorreto(true);
                     Toast.makeText(CriacaoQuestoes.this, "Acertou!", Toast.LENGTH_SHORT)
                             .show();
                     somaScore = somaScore + 1;
-                    //novaLogica.andaCarrinho();
                     updateScore(somaScore);
-                    mudarQuestao();
+                    mudarQuestao(true);
 
                 }
                 else
                 {
-                  // Integer.parseInt(novaLogica.printaBotao());
                     novaLogica.botaoCorreto(false);
                     Toast.makeText(CriacaoQuestoes.this, "Resposta errada!", Toast.LENGTH_SHORT)
                         .show();
-                        mudarQuestao();
+                        mudarQuestao(true);
                 }
             }
 
@@ -74,19 +69,17 @@ public class CriacaoQuestoes extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 if (escolhaCorreta == 2) {
-                   // Integer.parseInt(novaLogica.printaBotao());
                     novaLogica.botaoCorreto(true);
                         Toast.makeText(CriacaoQuestoes.this, "Acertou!", Toast.LENGTH_SHORT)
                                 .show();
                         somaScore = somaScore + 1;
-                     //   novaLogica.andaCarrinho();
                         updateScore(somaScore);
-                        mudarQuestao();
+                        mudarQuestao(true);
                     } else {
                    novaLogica.botaoCorreto(false);
                         Toast.makeText(CriacaoQuestoes.this, "Resposta errada!", Toast.LENGTH_SHORT)
                                 .show();
-                        mudarQuestao();
+                        mudarQuestao(true);
                     }
                 }
 
@@ -96,19 +89,18 @@ public class CriacaoQuestoes extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 if (escolhaCorreta == 3) {
-                    //Integer.parseInt(novaLogica.printaBotao())
 
                     novaLogica.botaoCorreto(true);
                         Toast.makeText(CriacaoQuestoes.this, "Acertou!", Toast.LENGTH_SHORT)
                                 .show();
                         somaScore = somaScore + 1;
                         updateScore(somaScore);
-                        mudarQuestao();
+                        mudarQuestao(true);
                 } else {
                     novaLogica.botaoCorreto(false);
                     Toast.makeText(CriacaoQuestoes.this, "Resposta errada!", Toast.LENGTH_SHORT)
                                 .show();
-                        mudarQuestao();
+                        mudarQuestao(true);
                     }
                 }
 
@@ -116,8 +108,8 @@ public class CriacaoQuestoes extends AppCompatActivity{
 
     }
 
-    private void mudarQuestao(){
-        novaLogica.logica();
+    private void mudarQuestao(boolean anda){
+        novaLogica.logica(anda);
         textoDaQuestao.setText(novaLogica.printaConta());
         escolhaCorreta = getEscolhaButton();
         String r1,r2,r3;

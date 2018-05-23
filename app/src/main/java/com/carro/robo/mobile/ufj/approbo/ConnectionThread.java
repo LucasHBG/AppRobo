@@ -36,10 +36,11 @@ public class ConnectionThread extends Thread {
         Tem como argumento uma string contendo o endereço MAC do dispositivo
     Bluetooth para o qual deve ser solicitada uma conexão.
      */
-    public ConnectionThread(String btDevAddress) {
 
-        this.server = false;
+
+    public void setbtvDevAdress(String btDevAddress){
         this.btDevAddress = btDevAddress;
+        this.server = false;
     }
 
     /*  O método run() contem as instruções que serão efetivamente realizadas

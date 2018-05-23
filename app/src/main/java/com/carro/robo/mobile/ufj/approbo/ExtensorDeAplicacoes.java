@@ -4,14 +4,10 @@ import android.app.Application;
 
 public class ExtensorDeAplicacoes extends Application {
 
-    private ConnectionThread connect;
+    public static ConnectionThread connect = new ConnectionThread();
 
     public ConnectionThread getConnect(){
         return connect;
-    }
-
-    public void setConnect(ConnectionThread A ) {
-        this.connect = A;
     }
 
 }

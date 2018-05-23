@@ -20,7 +20,6 @@ public class MainBluetoothActivity extends AppCompatActivity {
 
     static TextView statusMessage;
     static TextView textSpace;
-    public ConnectionThread connect;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,10 +70,8 @@ public class MainBluetoothActivity extends AppCompatActivity {
                 statusMessage.setText("Você selecionou " + data.getStringExtra("btDevName") + "\n"
                         + data.getStringExtra("btDevAddress"));
 
-                connect = new ConnectionThread(data.getStringExtra("btDevAddress"));
-                ExtensorDeAplicacoes APP = (ExtensorDeAplicacoes)getApplication();
-                APP.setConnect(connect);
-                connect.start();
+                ExtensorDeAplicacoes.connect.setbtvDevAdress(data.getStringExtra("btDevAddress"));
+                ExtensorDeAplicacoes.connect.start();   //variavel estática dentro de classe public ConnectionThread
                 finish();
             }
            else {
@@ -92,15 +89,6 @@ public class MainBluetoothActivity extends AppCompatActivity {
 
         Intent searchPairedDevicesIntent = new Intent(this, DiscoveredDevices.class);
         startActivityForResult(searchPairedDevicesIntent, SELECT_DISCOVERED_DEVICE);
-    }
-
-    public void sendMessage(String valor) { // função que envia do campo de texto
-        System.out.println("enviou andar: "+valor);
-        //EditText messageBox = (EditText) findViewById(R.id.editText_MessageBox);
-        //String messageBoxString = messageBox.getText().toString();
-        byte[] data = valor.getBytes();
-        connect.write(data);
-        //nela envio a quantidade em "cm" para o arduino
     }
 
 
