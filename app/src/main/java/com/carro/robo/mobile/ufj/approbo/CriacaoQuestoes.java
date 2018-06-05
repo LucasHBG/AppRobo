@@ -24,7 +24,6 @@ public class CriacaoQuestoes extends AppCompatActivity{
     private int escolhaCorreta;
 
     private int somaScore = 0;
-    //    private int numeroDaQuestao = 0;      com os calculos alterados e a nova logica usada, esse inteiro fica inutil
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

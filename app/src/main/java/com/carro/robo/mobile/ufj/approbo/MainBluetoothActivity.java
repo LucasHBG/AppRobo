@@ -12,7 +12,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class MainBluetoothActivity extends AppCompatActivity {
+public class
+MainBluetoothActivity extends AppCompatActivity {
 
     public static int ENABLE_BLUETOOTH = 1;
     public static int SELECT_PAIRED_DEVICE = 2;
